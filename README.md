@@ -23,13 +23,9 @@
     npm install
 
 #### Scripts
-Para executar o projeto em ambiente de desenvolvimento:
+Para executar o projeto:
 
     # Na pasta raíz do projeto, execute:
     npm start
-Para executar o projeto em ambiente de produção:
 
-    # Na pasta raíz do projeto, execute:
-    1-) npm build
-    2-) npm start
     
