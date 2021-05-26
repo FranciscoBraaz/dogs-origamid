@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState("");
-  const [authenticated, setAuthenticated] = React.useState("");
+  const [authenticated, setAuthenticated] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
@@ -39,6 +39,8 @@ export const UserStorage = ({ children }) => {
         } finally {
           setLoading(false);
         }
+      } else {
+        setAuthenticated(false);
       }
     }
     autoLogin();
