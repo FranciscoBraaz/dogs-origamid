@@ -1,7 +1,7 @@
 import React from "react";
 import { UserContext } from "../../contexts/UserContext";
 import PhotoCommentsForm from "./PhotoCommentsForm";
-import styles from "../../Styles/PhotoComments.module.css";
+import styles from "../../Styles/Photo/PhotoComments.module.css";
 
 const PhotoComments = ({ id, comments }) => {
   const { authenticated } = React.useContext(UserContext);
@@ -10,7 +10,6 @@ const PhotoComments = ({ id, comments }) => {
 
   React.useEffect(() => {
     sectionComments.current.scrollTop = sectionComments.current.scrollHeight;
-    console.log("oi");
   }, [commentsPhoto]);
 
   return (

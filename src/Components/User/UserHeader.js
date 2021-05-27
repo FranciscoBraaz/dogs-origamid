@@ -1,6 +1,6 @@
 import React from "react";
 import UserHeaderNav from "./UserHeaderNav";
-import styles from "../../Styles/UserHeader.module.css";
+import styles from "../../Styles/User/UserHeader.module.css";
 import { useLocation } from "react-router";
 
 const UserHeader = () => {

@@ -5,7 +5,7 @@ import { ReactComponent as MinhasFotos } from "../../Assets/feed.svg";
 import { ReactComponent as Estatisticas } from "../../Assets/estatisticas.svg";
 import { ReactComponent as AdicionarFoto } from "../../Assets/adicionar.svg";
 import { ReactComponent as Sair } from "../../Assets/sair.svg";
-import styles from "../../Styles/UserHeaderNav.module.css";
+import styles from "../../Styles/User/UserHeaderNav.module.css";
 import useMedia from "../../Hooks/useMedia";
 
 const UserHeaderNav = () => {
