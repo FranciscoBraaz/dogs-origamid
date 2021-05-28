@@ -7,7 +7,7 @@ const UserProfile = () => {
   return (
     <section className="container mainContainer">
       <h1 className="title">{user}</h1>
-      <Feed user={user.id} />
+      <Feed user={user} />
     </section>
   );
 };
