@@ -17,7 +17,6 @@ function App() {
         <UserStorage>
           <Header />
           <main className="AppBody">
-            {" "}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="login/*" element={<Login />} />
