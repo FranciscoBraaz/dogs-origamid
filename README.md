@@ -5,7 +5,7 @@
 
 <img src="https://i.imgur.com/HNjZLoJ.jpg" alt="Home do site, com feed de fotos" width="80%"/>
 
-### ⚙️ Previews:
+### 💻 Previews:
 
 #### - Preview 1:
 <img src="/gifs/preview1.gif?raw=true" width="100%">
