@@ -1,10 +1,9 @@
-**
-
 # Dogs - Uma rede social para seu animalzinho
 
-**
-### ⚙️ Em desenvolvimento...
-<img src="https://i.imgur.com/w2hPJ4n.jpg" alt="home inicial sem tocando podcast" width="80%"/>
+###  🔽 Veja funcionando:
+[Deploy](https://dogs-origamid-ebon.vercel.app/)
+
+<img src="https://i.imgur.com/HNjZLoJ.jpg" alt="Home do site, com feed de fotos" width="80%"/>
 
 ## 👷  Executando o projeto
 
