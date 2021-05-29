@@ -5,6 +5,14 @@
 
 <img src="https://i.imgur.com/HNjZLoJ.jpg" alt="Home do site, com feed de fotos" width="80%"/>
 
+### ⚙️ Previews:
+
+#### - Preview 1:
+<img src="/gifs/preview1.gif?raw=true" width="100%">
+
+#### - Preview 2:
+<img src="/gifs/preview2.gif?raw=true" width="100%">
+
 ## 👷  Executando o projeto
 
  #### Baixando repositório para sua máquina
