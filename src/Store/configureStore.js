@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import photo from './photo';
 
-const contador = () => 0;
-const reducer = combineReducers({ contador });
+const reducer = combineReducers({ photo });
 const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
