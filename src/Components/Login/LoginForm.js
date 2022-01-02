@@ -1,23 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import UserContext from "../../contexts/UserContext";
-import useForm from "../../Hooks/useForm";
-import Button from "../Forms/Button";
-import Input from "../Forms/Input";
-import Error from "../Helper/Error";
-import styles from "../../Styles/LoginForm.module.css";
-import stylesBtn from "../../Styles/Button.module.css";
-import Head from "../Helper/Head";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useForm from '../../Hooks/useForm';
+import Button from '../Forms/Button';
+import Input from '../Forms/Input';
+import Error from '../Helper/Error';
+import styles from '../../Styles/LoginForm.module.css';
+import stylesBtn from '../../Styles/Button.module.css';
+import Head from '../Helper/Head';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLogin } from '../../Store/user';
 
 const LoginForm = () => {
   const username = useForm();
   const password = useForm();
-  const { userLogin, error, loading } = React.useContext(UserContext);
+  const dispatch = useDispatch();
+  const { token, user } = useSelector((state) => state);
+  const loading = token.loading || user.loading;
+  const error = token.error || user.error;
 
   async function handleSubmit(event) {
     event.preventDefault();
     if (username.validate() && password.validate()) {
-      userLogin(username.value, password.value);
+      dispatch(
+        fetchLogin({ username: username.value, password: password.value }),
+      );
     }
   }
 

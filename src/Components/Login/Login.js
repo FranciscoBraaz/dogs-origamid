@@ -1,17 +1,17 @@
-import React from "react";
-import { Routes, Route, Navigate } from "react-router";
-import UserContext from "../../contexts/UserContext";
-import LoginCreate from "./LoginCreate";
-import LoginForm from "./LoginForm";
-import LoginPasswordLost from "./LoginPasswordLost";
-import LoginPasswordReset from "./LoginPasswordReset";
-import styles from "../../Styles/Login.module.css";
-import NotFound from "../NotFound";
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router';
+import LoginCreate from './LoginCreate';
+import LoginForm from './LoginForm';
+import LoginPasswordLost from './LoginPasswordLost';
+import LoginPasswordReset from './LoginPasswordReset';
+import styles from '../../Styles/Login.module.css';
+import NotFound from '../NotFound';
+import { useSelector } from 'react-redux';
 
 const Login = () => {
-  const { authenticated } = React.useContext(UserContext);
+  const { data } = useSelector((state) => state.user);
 
-  if (authenticated) return <Navigate to="/conta" />;
+  if (data !== null) return <Navigate to="/conta" />;
   return (
     <section className={styles.login}>
       <div className={styles.forms}>
