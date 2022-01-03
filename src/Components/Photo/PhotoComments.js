@@ -1,10 +1,10 @@
-import React from "react";
-import { UserContext } from "../../contexts/UserContext";
-import PhotoCommentsForm from "./PhotoCommentsForm";
-import styles from "../../Styles/Photo/PhotoComments.module.css";
+import React from 'react';
+import PhotoCommentsForm from './PhotoCommentsForm';
+import styles from '../../Styles/Photo/PhotoComments.module.css';
+import { useSelector } from 'react-redux';
 
 const PhotoComments = ({ single, id, comments }) => {
-  const { authenticated } = React.useContext(UserContext);
+  const { data } = useSelector((state) => state.user);
   const [commentsPhoto, setCommentsPhoto] = React.useState(() => comments);
   const sectionComments = React.useRef(null);
 
@@ -16,7 +16,7 @@ const PhotoComments = ({ single, id, comments }) => {
     <>
       <ul
         ref={sectionComments}
-        className={`${styles.comments} ${single ? styles.single : ""}`}
+        className={`${styles.comments} ${single ? styles.single : ''}`}
       >
         {commentsPhoto.map((comment) => (
           <li key={comment.comment_ID}>
@@ -27,7 +27,7 @@ const PhotoComments = ({ single, id, comments }) => {
           </li>
         ))}
       </ul>
-      {authenticated && (
+      {data && (
         <PhotoCommentsForm
           single={single}
           id={id}

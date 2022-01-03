@@ -1,19 +1,20 @@
-import React from "react";
-import useForm from "../../Hooks/useForm";
-import { USER_POST } from "../api";
-import Button from "../Forms/Button";
-import Input from "../Forms/Input";
-import UserContext from "../../contexts/UserContext";
-import useFetch from "../../Hooks/useFetch";
-import Error from "../Helper/Error";
-import Head from "../Helper/Head";
+import React from 'react';
+import useForm from '../../Hooks/useForm';
+import { USER_POST } from '../api';
+import Button from '../Forms/Button';
+import Input from '../Forms/Input';
+import useFetch from '../../Hooks/useFetch';
+import Error from '../Helper/Error';
+import Head from '../Helper/Head';
+import { useDispatch } from 'react-redux';
+import { fetchLogin } from '../../Store/user';
 
 const LoginCreate = () => {
   const username = useForm();
-  const email = useForm("email");
+  const email = useForm('email');
   const password = useForm();
-  const { userLogin } = React.useContext(UserContext);
   const { loading, error, request } = useFetch();
+  const dispatch = useDispatch();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -24,7 +25,9 @@ const LoginCreate = () => {
     });
     const { response } = await request(url, options);
     if (response.ok) {
-      userLogin(username.value, password.value);
+      dispatch(
+        fetchLogin({ username: username.value, password: password.value }),
+      );
     }
   }
   return (

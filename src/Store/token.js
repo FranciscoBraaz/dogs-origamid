@@ -1,8 +1,16 @@
 import { TOKEN_POST } from '../Components/api';
 import { createAsyncSlice } from '../Components/Helper/createAsyncSlice';
+import { getLocalStorage } from '../Components/Helper/getLocalStorage';
 
-const token = createAsyncSlice({
+const slice = createAsyncSlice({
   name: 'token',
+  initialState: {
+    loading: false,
+    data: {
+      token: getLocalStorage('token', null),
+    },
+    error: null,
+  },
   reducers: {
     fetchSuccess: {
       reducer(state, action) {
@@ -26,6 +34,7 @@ const token = createAsyncSlice({
   fetchConfig: (user) => TOKEN_POST(user),
 });
 
-export const fetchToken = token.asyncAction;
+export const { resetState: resetTokenState } = slice.actions;
+export const fetchToken = slice.asyncAction;
 
-export default token.reducer;
+export default slice.reducer;
