@@ -1,12 +1,22 @@
-import React from "react";
-import FeedModal from "./FeedModal";
-import FeedPhotos from "./FeedPhotos";
-import PropTypes from "prop-types";
+import React from 'react';
+import FeedModal from './FeedModal';
+import FeedPhotos from './FeedPhotos';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadNewPhotos, resetFeedState } from '../../Store/feed';
+import Error from '../Helper/Error';
+import Loader from '../Helper/Loader';
 
 const Feed = ({ user }) => {
   const [modalPhoto, setModalPhoto] = React.useState(null);
-  const [pages, setPages] = React.useState([1, 2]);
-  const [infinite, setInfinite] = React.useState(true);
+  const dispatch = useDispatch();
+  const { infinite, list, error, loading } = useSelector((state) => state.feed);
+
+  React.useEffect(() => {
+    dispatch(resetFeedState());
+
+    dispatch(loadNewPhotos({ total: 3, user }));
+  }, [dispatch, user]);
 
   React.useEffect(() => {
     let wait = false;
@@ -15,7 +25,7 @@ const Feed = ({ user }) => {
         const height = document.body.offsetHeight - window.innerHeight;
         const scroll = window.scrollY;
         if (scroll > height * 0.75 && !wait) {
-          setPages((pages) => [...pages, pages.length + 1]);
+          dispatch(loadNewPhotos({ total: 3, user }));
           wait = true;
           setTimeout(() => {
             wait = false;
@@ -23,30 +33,22 @@ const Feed = ({ user }) => {
         }
       }
     }
-    window.addEventListener("wheel", infiniteScroll);
-    window.addEventListener("scroll", infiniteScroll);
+    window.addEventListener('wheel', infiniteScroll);
+    window.addEventListener('scroll', infiniteScroll);
     return () => {
-      window.removeEventListener("wheel", infiniteScroll);
-      window.removeEventListener("scroll", infiniteScroll);
+      window.removeEventListener('wheel', infiniteScroll);
+      window.removeEventListener('scroll', infiniteScroll);
     };
-  }, [infinite]);
+  }, [infinite, dispatch, user]);
 
   return (
     <div>
       {modalPhoto && (
         <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
       )}
-      {pages.map((page) => {
-        return (
-          <FeedPhotos
-            user={user}
-            key={page}
-            page={page}
-            setModalPhoto={setModalPhoto}
-            setInfinite={setInfinite}
-          />
-        );
-      })}
+      {error && <Error error={error} />}
+      {loading && <Loader />}
+      {list && <FeedPhotos setModalPhoto={setModalPhoto} />}
     </div>
   );
 };
