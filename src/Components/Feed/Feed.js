@@ -8,7 +8,6 @@ import Error from '../Helper/Error';
 import Loader from '../Helper/Loader';
 
 const Feed = ({ user }) => {
-  const [modalPhoto, setModalPhoto] = React.useState(null);
   const dispatch = useDispatch();
   const { infinite, list, error, loading } = useSelector((state) => state.feed);
 
@@ -43,12 +42,10 @@ const Feed = ({ user }) => {
 
   return (
     <div>
-      {modalPhoto && (
-        <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
-      )}
+      <FeedModal />
       {error && <Error error={error} />}
       {loading && <Loader />}
-      {list && <FeedPhotos setModalPhoto={setModalPhoto} />}
+      {list && <FeedPhotos />}
     </div>
   );
 };

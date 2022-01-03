@@ -3,16 +3,12 @@ import FeedPhotosItem from './FeedPhotosItem';
 import styles from '../../Styles/Feed/FeedPhotos.module.css';
 import { useSelector } from 'react-redux';
 
-const FeedPhotos = ({ setModalPhoto }) => {
+const FeedPhotos = () => {
   const { list } = useSelector((state) => state.feed);
   return (
     <ul className={`${styles.feed} animationLeft`}>
       {list.map((photo) => (
-        <FeedPhotosItem
-          setModalPhoto={setModalPhoto}
-          key={photo.id}
-          photo={photo}
-        />
+        <FeedPhotosItem key={photo.id} photo={photo} />
       ))}
     </ul>
   );

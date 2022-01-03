@@ -1,10 +1,16 @@
-import React from "react";
-import styles from "../../Styles/Feed/FeedPhotosItem.module.css";
-import Image from "../Helper/Image";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchPhoto } from '../../Store/photo';
+import { openModal } from '../../Store/ui';
+import styles from '../../Styles/Feed/FeedPhotosItem.module.css';
+import Image from '../Helper/Image';
 
-const FeedPhotosItem = ({ photo, setModalPhoto }) => {
+const FeedPhotosItem = ({ photo }) => {
+  const dispatch = useDispatch();
+
   function handleClick() {
-    setModalPhoto(photo);
+    dispatch(openModal());
+    dispatch(fetchPhoto(photo.id));
   }
   return (
     <li className={styles.photo} onClick={handleClick}>
