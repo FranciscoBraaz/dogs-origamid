@@ -5,8 +5,9 @@ import token from './token';
 import user from './user';
 import feed from './feed';
 import ui from './ui';
+import postPhoto from './postPhoto';
 
-const reducer = combineReducers({ photo, token, user, feed, ui });
+const reducer = combineReducers({ photo, postPhoto, token, user, feed, ui });
 const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
