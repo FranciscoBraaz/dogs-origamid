@@ -90,7 +90,8 @@ export function COMMENT_POST(id, body) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + window.localStorage.getItem('token'),
+        Authorization:
+          'Bearer ' + JSON.parse(window.localStorage.getItem('token')),
       },
       body: JSON.stringify(body),
     },
@@ -103,7 +104,8 @@ export function PHOTO_DELETE(id) {
     options: {
       method: 'DELETE',
       headers: {
-        Authorization: 'Bearer ' + window.localStorage.getItem('token'),
+        Authorization:
+          'Bearer ' + JSON.parse(window.localStorage.getItem('token')),
       },
     },
   };
@@ -141,7 +143,8 @@ export function STATS_GET() {
     options: {
       method: 'GET',
       headers: {
-        Authorization: 'Bearer ' + window.localStorage.getItem('token'),
+        Authorization:
+          'Bearer ' + JSON.parse(window.localStorage.getItem('token')),
       },
     },
   };

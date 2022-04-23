@@ -10,7 +10,7 @@ const PhotoContent = ({ single }) => {
   const { photo, comments } = useSelector((state) => state.photo.data);
 
   const { user } = useSelector((state) => state);
-  console.log(comments);
+
   return (
     <div className={`${styles.photo} ${single ? styles.single : ''}`}>
       <div className={styles.img}>

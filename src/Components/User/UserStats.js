@@ -1,10 +1,10 @@
-import React from "react";
-import useFetch from "../../Hooks/useFetch";
-import { STATS_GET } from "../api";
-import Error from "../Helper/Error";
-import Head from "../Helper/Head";
-import Loader from "../Helper/Loader";
-const UserStatsGraphs = React.lazy(() => import("./UserStatsGraphs"));
+import React from 'react';
+import useFetch from '../../Hooks/useFetch';
+import { STATS_GET } from '../api';
+import Error from '../Helper/Error';
+import Head from '../Helper/Head';
+import Loader from '../Helper/Loader';
+const UserStatsGraphs = React.lazy(() => import('./UserStatsGraphs'));
 
 const UserStats = () => {
   const { data, error, loading, request } = useFetch();
@@ -19,7 +19,7 @@ const UserStats = () => {
   if (loading) return <Loader />;
   if (error) return <Error error={error} />;
   if (!data) return null;
-  console.log(data);
+
   return (
     <React.Suspense fallback={<div></div>}>
       <Head title="Estatísticas" description="Página de estatísticas" />
